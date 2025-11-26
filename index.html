@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inicio · Propuesta Carmelo Mendizabal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="inicio">
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-icon">CM</div>
+        <div>
+          <div>Carmelo Mendizabal</div>
+          <div class="logo-sub">Demo Gestión de Calidad</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="trazabilidad.html">Trazabilidad QR</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO INICIO -->
+    <section class="hero hero-split">
+      <div>
+        <h1>
+          Propuesta de mejora de calidad para
+          <span class="hero-highlight">Carmelo Mendizabal</span>
+        </h1>
+        <p>
+          Esta web es un <strong>prototipo académico</strong> para la asignatura de
+          <strong>Gestión de Calidad</strong>. Simula cómo podría modernizarse la
+          empresa familiar de tornillería <strong>Carmelo Mendizabal</strong> mediante:
+        </p>
+        <ul class="hero-list">
+          <li>Compra de lotes directamente desde la web (apartado <strong>Productos</strong>).</li>
+          <li>Trazabilidad digital de lotes mediante códigos QR (apartado <strong>Trazabilidad QR</strong>).</li>
+          <li>Chatbot multipropósito: presupuestos, dudas técnicas y atención a clientes.</li>
+        </ul>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="productos.html">Ver prototipo de compra de lotes →</a>
+          <a class="btn btn-outline" href="trazabilidad.html">Explorar trazabilidad QR</a>
+        </div>
+
+        <div class="hero-mini">
+          <div>
+            <div class="hero-mini-title">Objetivo del proyecto</div>
+            <div class="hero-mini-text">
+              Detectar puntos débiles de la empresa y proponer mejoras alineadas con
+              los principios de la gestión de calidad (servicio al cliente, trazabilidad,
+              mejora continua).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>Contexto de la propuesta</h2>
+        <p class="hero-text-small">
+          Actualmente, la web de la empresa muestra productos pero no permite comprar
+          directamente ni consultar precios en tiempo real. Tampoco existe un sistema
+          formal de <strong>trazabilidad de lotes</strong> durante la fabricación.
+        </p>
+
+        <div class="img-grid">
+          <!-- Puedes sustituir las URLs por imágenes propias si quieres -->
+          <figure class="img-card">
+            <img src="https://barrena.tok-md.com/argazkiak/cID/cache/Captura_de_Pantalla_2023-04-14_a_las_10.53.04_tokikom_735x413.png" alt="Tornillos y tuercas" />
+            <figcaption>Tornillería industrial (imagen ilustrativa)</figcaption>
+          </figure>
+          <figure class="img-card">
+            <img src="https://images.pexels.com/photos/37347/office-freelancer-computer-business-37347.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Empresa familiar" />
+            <figcaption>Entorno de empresa familiar (imagen ilustrativa)</figcaption>
+          </figure>
+        </div>
+
+        <p class="hero-text-small">
+          En este prototipo se muestra cómo:
+        </p>
+        <ul class="hero-list hero-list-compact">
+          <li>un cliente podría realizar un pedido estándar sin llamadas ni correos;</li>
+          <li>cada lote tendría un <strong>código QR</strong> asociado a su ficha digital;</li>
+          <li>un chatbot podría atender consultas básicas sin intervención humana.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <div class="section-header">
+        <h2>Relación con la Gestión de Calidad</h2>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-content">
+            <div class="pill">Calidad de servicio</div>
+            <h3 class="card-title">Mejora en la atención al cliente</h3>
+            <p class="card-text">
+              El e-commerce de lotes y el chatbot reducen tiempos de respuesta,
+              evitan esperas y facilitan la comunicación con el cliente, aumentando
+              la satisfacción y reduciendo errores de pedido.
+            </p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <div class="pill">Calidad del proceso</div>
+            <h3 class="card-title">Trazabilidad y control de lotes</h3>
+            <p class="card-text">
+              El sistema de QR permite seguir cada lote a lo largo del proceso
+              productivo, registrar incidencias y reaccionar rápidamente ante no
+              conformidades, alineándose con prácticas tipo ISO 9001.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chatbot global -->
+  <button class="chat-toggle" id="chatToggle" title="Asistente virtual">
+    💬
+  </button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div>
+        <div class="chat-title">Asistente Carmelo·AI</div>
+        <div class="chat-tagline">
+          Presupuestos · dudas técnicas · atención al cliente
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Escribe tu pregunta..." />
+      <button onclick="sendChat()">Enviar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
