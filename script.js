@@ -70,6 +70,87 @@ const lotsDB = [
   }
 ];
 
+// --- Datos de ejemplo: pedidos para seguimiento ---
+
+const ordersDB = [
+  {
+    code: "PED-2025-001",
+    customer: "Cliente industrial A",
+    productSummary: "Tornillo DIN 84 M6 x 20 · 500 uds (L-2025-001)",
+    orderDate: "2025-10-05",
+    estimatedDelivery: "2025-10-12",
+    status: "En preparación",
+    steps: [
+      {
+        title: "Pedido recibido",
+        date: "2025-10-05",
+        detail: "Pedido registrado en el sistema y enviado a planificación."
+      },
+      {
+        title: "En preparación",
+        date: "2025-10-06",
+        detail: "Reserva del lote L-2025-001 y preparación en almacén."
+      }
+    ]
+  },
+  {
+    code: "PED-2025-002",
+    customer: "Cliente industrial B",
+    productSummary: "Varilla roscada M10 · 100 uds (L-2025-002)",
+    orderDate: "2025-09-18",
+    estimatedDelivery: "2025-09-25",
+    status: "En tránsito",
+    steps: [
+      {
+        title: "Pedido recibido",
+        date: "2025-09-18",
+        detail: "Confirmación automática enviada al cliente."
+      },
+      {
+        title: "Preparado para envío",
+        date: "2025-09-20",
+        detail: "Paletizado y etiquetado en almacén central."
+      },
+      {
+        title: "En tránsito",
+        date: "2025-09-21",
+        detail: "Transportista externo ha recogido la mercancía."
+      }
+    ]
+  },
+  {
+    code: "PED-2025-003",
+    customer: "Cliente industrial C",
+    productSummary: "Remache DIN 663 Ø4 x 12 · 2000 uds (L-2025-003)",
+    orderDate: "2025-10-10",
+    estimatedDelivery: "2025-10-16",
+    status: "Entregado",
+    steps: [
+      {
+        title: "Pedido recibido",
+        date: "2025-10-10",
+        detail: "Pedido registrado y enviado a producción."
+      },
+      {
+        title: "Preparado para envío",
+        date: "2025-10-12",
+        detail: "Control de calidad final completado."
+      },
+      {
+        title: "En tránsito",
+        date: "2025-10-13",
+        detail: "Salida de almacén dirección cliente."
+      },
+      {
+        title: "Entregado",
+        date: "2025-10-15",
+        detail: "Recepción confirmada por el cliente sin incidencias."
+      }
+    ]
+  }
+];
+
+
 // --- Utilidades generales ---
 
 function formatDate(dateStr) {
@@ -265,6 +346,73 @@ function quickLot(code) {
   lookupLot();
 }
 
+// --- Seguimiento de pedidos (solo en pedidos.html) ---
+
+function lookupOrder() {
+  const input = document.getElementById("pedidoInput");
+  const container = document.getElementById("orderInfo");
+  if (!input || !container) return;
+
+  const code = input.value.trim().toUpperCase();
+  if (!code) {
+    container.innerHTML =
+      '<div class="trace-empty">Introduce un número de pedido válido.</div>';
+    return;
+  }
+
+  const order = ordersDB.find((o) => o.code.toUpperCase() === code);
+  if (!order) {
+    container.innerHTML = `
+      <div class="trace-empty">
+        No se ha encontrado el pedido <strong>${code}</strong> en la base de datos de ejemplo.
+        En un sistema real aquí se mostrarían también pedidos cancelados o pendientes de pago.
+      </div>
+    `;
+    return;
+  }
+
+  const stepsHtml = order.steps
+    .map(
+      (s) => `
+      <div class="order-step">
+        <div class="order-step-dot"></div>
+        <div class="order-step-text">
+          <div class="order-step-title">${s.title}</div>
+          <div class="order-step-date">${formatDate(s.date)}</div>
+          <div>${s.detail}</div>
+        </div>
+      </div>
+    `
+    )
+    .join("");
+
+  container.innerHTML = `
+    <div class="order-header">
+      <div class="order-code">Pedido: <strong>${order.code}</strong></div>
+      <div class="order-meta">Cliente: ${order.customer}</div>
+      <div class="order-meta">Resumen: ${order.productSummary}</div>
+      <div class="order-meta">Fecha de pedido: ${formatDate(order.orderDate)}</div>
+      <div class="order-meta">Entrega estimada: ${formatDate(order.estimatedDelivery)}</div>
+      <div class="order-status-pill">● ${order.status}</div>
+    </div>
+    <div class="order-timeline">
+      ${stepsHtml}
+    </div>
+    <p style="margin-top:0.8rem;font-size:0.8rem;color:#666;">
+      Nota académica: este módulo podría integrarse con el sistema de gestión de almacén (WMS)
+      y con el transportista para actualizar automáticamente cada estado del pedido.
+    </p>
+  `;
+}
+
+function quickOrder(code) {
+  const input = document.getElementById("pedidoInput");
+  if (!input) return;
+  input.value = code;
+  lookupOrder();
+}
+
+
 // --- Chatbot multipropósito ---
 
 let chatInitialized = false;
@@ -428,12 +576,12 @@ function openChatWithHint(productName) {
 document.addEventListener("DOMContentLoaded", () => {
   const page = document.body.getAttribute("data-page");
 
-  // Si estamos en Productos, pintamos el catálogo
+  // Catálogo
   if (page === "productos") {
     renderProducts();
   }
 
-  // Si estamos en Trazabilidad, miramos si hay ?lote= en la URL
+  // Trazabilidad: leer ?lote= de la URL si existe
   if (page === "trazabilidad") {
     const params = new URLSearchParams(window.location.search);
     const loteParam = params.get("lote");
@@ -441,12 +589,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const input = document.getElementById("loteInput");
       if (input) {
         input.value = loteParam;
-        lookupLot(); // Mostramos directamente la info del lote
+        lookupLot();
       }
     }
   }
 
-  // Chat: enter para enviar
+  // Seguimiento de pedidos: leer ?pedido= de la URL si quieres usar también QR para pedidos
+  if (page === "pedidos") {
+    const params = new URLSearchParams(window.location.search);
+    const pedidoParam = params.get("pedido");
+    if (pedidoParam) {
+      const input = document.getElementById("pedidoInput");
+      if (input) {
+        input.value = pedidoParam;
+        lookupOrder();
+      }
+    }
+  }
+
+  // Chat: enviar con Enter
   const chatInput = document.getElementById("chatInput");
   if (chatInput) {
     chatInput.addEventListener("keydown", (e) => {
@@ -461,4 +622,5 @@ document.addEventListener("DOMContentLoaded", () => {
     chatToggle.addEventListener("click", toggleChat);
   }
 });
+
 

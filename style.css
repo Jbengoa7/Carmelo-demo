@@ -661,3 +661,96 @@ input[type="text"]:focus {
   color: #fff;
   cursor: pointer;
 }
+
+/* Seguimiento de pedidos */
+
+.order-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.2fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .order-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.order-form,
+.order-info {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.2rem 1.3rem;
+  font-size: 0.9rem;
+}
+
+.order-form label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.order-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.order-code {
+  font-weight: 600;
+}
+
+.order-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.order-meta {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.4rem;
+}
+
+.order-timeline {
+  margin-top: 0.7rem;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  padding-top: 0.6rem;
+}
+
+.order-step {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  margin-bottom: 0.4rem;
+}
+
+.order-step-dot {
+  margin-top: 0.28rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+.order-step-text {
+  flex: 1;
+}
+
+.order-step-title {
+  font-weight: 600;
+}
+
+.order-step-date {
+  font-size: 0.75rem;
+  color: #777;
+}
+
