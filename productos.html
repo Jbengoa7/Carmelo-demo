@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Productos · Propuesta Carmelo Mendizabal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="productos">
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <img src="img/Logo.png" alt="Logo Carmelo Mendizabal" class="logo-img" />
+      </div> 
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html" class="active">Productos</a>
+        <a href="trazabilidad.html">Trazabilidad QR</a>
+        <a href="pedidos.html">Seguimiento de pedidos</a>
+      </div>      
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-header">
+        <h2>Catálogo de productos · compra de lotes online</h2>
+        <p>
+          Aquí se muestra el prototipo de un catálogo B2B donde el cliente puede seleccionar
+          un producto, elegir el tamaño del lote y obtener un <strong>presupuesto estimado</strong>
+          sin necesidad de contactar primero por teléfono o correo.
+        </p>
+      </div>
+      <div class="card-grid" id="productGrid">
+        <!-- Rellenado por script.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal compra -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Comprar lote</div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="confirmOrder()">Simular pedido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbot global -->
+  <button class="chat-toggle" id="chatToggle" title="Asistente virtual">
+    💬
+  </button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div>
+        <div class="chat-title">Asistente Carmelo·AI</div>
+        <div class="chat-tagline">
+          Presupuestos · dudas técnicas · atención al cliente
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Pide un presupuesto, pregunta dudas..." />
+      <button onclick="sendChat()">Enviar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <footer class="footer">
+    <p><strong>Contacto:</strong> +34 943 75 13 37 · info@carmelomendizabal.com</p>
+    <p>Bº Txurruka, 1 - Ctra. Bergara · 20590 Soraluze, Gipuzkoa (Spain)</p>
+  </footer>
+  
+</body>
+</html>

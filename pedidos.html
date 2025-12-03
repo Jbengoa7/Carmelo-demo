@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Seguimiento de pedidos · Carmelo Mendizabal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="pedidos">
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <img src="img/Logo.png" alt="Logo Carmelo Mendizabal" class="logo-img" />
+      </div> 
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="trazabilidad.html">Trazabilidad QR</a>
+        <a href="pedidos.html" class="active">Seguimiento de pedidos</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-header">
+        <h2>Seguimiento de pedidos (vista cliente)</h2>
+        <p>
+          Ejemplo de cómo un cliente podría consultar el estado de su pedido,
+          de forma similar a plataformas como Amazon: preparación, expedición,
+          tránsito y entrega.
+        </p>
+      </div>
+
+      <div class="order-wrapper">
+        <div class="order-form">
+          <label for="pedidoInput">Número de pedido</label>
+          <div class="input-row">
+            <input
+              type="text"
+              id="pedidoInput"
+              placeholder="Ejemplo: PED-2025-001"
+            />
+            <button class="btn btn-primary" type="button" onclick="lookupOrder()">
+              Consultar pedido
+            </button>
+          </div>
+          <p class="hint">
+            En una implantación real, este número se generaría al confirmar la compra
+            y se enviaría al cliente por correo junto con el enlace de seguimiento.
+          </p>
+
+          <div class="examples">
+            <span class="trace-label">Ejemplos de pedidos de prueba:</span><br />
+            <button class="chip" type="button" onclick="quickOrder('PED-2025-001')">PED-2025-001</button>
+            <button class="chip" type="button" onclick="quickOrder('PED-2025-002')">PED-2025-002</button>
+            <button class="chip" type="button" onclick="quickOrder('PED-2025-003')">PED-2025-003</button>
+          </div>
+        </div>
+
+        <div class="order-info" id="orderInfo">
+          <div class="trace-empty">
+            Introduce un número de pedido o pulsa uno de los ejemplos para ver:
+            <ul class="trace-list">
+              <li>Resumen del pedido (producto, lote, cantidad).</li>
+              <li>Estado actual (preparación, enviado, entregado...).</li>
+              <li>Línea temporal del pedido (fechas clave).</li>
+              <li>Fecha estimada de entrega.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chatbot global -->
+  <button class="chat-toggle" id="chatToggle" title="Asistente virtual">
+    💬
+  </button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div>
+        <div class="chat-title">Asistente Carmelo·AI</div>
+        <div class="chat-tagline">
+          Presupuestos · dudas técnicas · atención al cliente
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Pregunta por un pedido, lote, etc." />
+      <button onclick="sendChat()">Enviar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <footer class="footer">
+    <p><strong>Contacto:</strong> +34 943 75 13 37 · info@carmelomendizabal.com</p>
+    <p>Bº Txurruka, 1 - Ctra. Bergara · 20590 Soraluze, Gipuzkoa (Spain)</p>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trazabilidad QR · Propuesta Carmelo Mendizabal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="trazabilidad">
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <img src="img/Logo.png" alt="Logo Carmelo Mendizabal" class="logo-img" />
+      </div> 
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="trazabilidad.html" class="active">Trazabilidad QR</a>
+        <a href="pedidos.html">Seguimiento de pedidos</a>
+      </div>      
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-header">
+        <h2>Trazabilidad de lotes mediante código QR</h2>
+        <p>
+          Ejemplo de cómo cada lote podría tener un <strong>número de serie</strong> y un
+          <strong>código QR</strong> que, al escanearse, lleva a esta página para consultar
+          toda la información relevante del lote.
+        </p>
+      </div>
+
+      <div class="trace-wrapper">
+        <div class="trace-form">
+          <label for="loteInput">Número de lote / serie (vinculado al QR)</label>
+          <div class="input-row">
+            <input
+              type="text"
+              id="loteInput"
+              placeholder="Ejemplo: L-2025-001"
+            />
+            <button class="btn btn-primary" type="button" onclick="lookupLot()">
+              Consultar
+            </button>
+          </div>
+          <p class="hint">
+            En un entorno real, al escanear el QR en el taller o en el almacén,
+            se abriría automáticamente esta página con el número de serie ya rellenado.
+          </p>
+
+          <div class="examples">
+            <span class="trace-label">Ejemplos de lotes de prueba:</span><br />
+            <button class="chip" type="button" onclick="quickLot('L-2025-001')">L-2025-001</button>
+            <button class="chip" type="button" onclick="quickLot('L-2025-002')">L-2025-002</button>
+            <button class="chip" type="button" onclick="quickLot('L-2025-003')">L-2025-003</button>
+          </div>
+        </div>
+
+        <div class="trace-info" id="traceInfo">
+          <div class="trace-empty">
+            Introduce un número de lote o usa uno de los ejemplos para ver:
+            <ul class="trace-list">
+              <li>Fecha de fabricación.</li>
+              <li>Máquina usada.</li>
+              <li>Número de lote / serie.</li>
+              <li>Material.</li>
+              <li>Responsable.</li>
+              <li>Registro de calidad (estado, incidencias, etc.).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chatbot global -->
+  <button class="chat-toggle" id="chatToggle" title="Asistente virtual">
+    💬
+  </button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div>
+        <div class="chat-title">Asistente Carmelo·AI</div>
+        <div class="chat-tagline">
+          Presupuestos · dudas técnicas · atención al cliente
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Pregunta sobre un lote, calidad, etc." />
+      <button onclick="sendChat()">Enviar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <footer class="footer">
+    <p><strong>Contacto:</strong> +34 943 75 13 37 · info@carmelomendizabal.com</p>
+    <p>Bº Txurruka, 1 - Ctra. Bergara · 20590 Soraluze, Gipuzkoa (Spain)</p>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inicio · Propuesta Carmelo Mendizabal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="inicio">
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <img src="img/Logo.png" alt="Logo Carmelo Mendizabal" class="logo-img" />
+      </div>      
+      <div class="nav-links">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="trazabilidad.html">Trazabilidad QR</a>
+        <a href="pedidos.html">Seguimiento de pedidos</a>
+      </div>
+      
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO INICIO -->    
+    <section class="hero hero-split">
+      <div>
+        <h1>
+          Tornillería 
+          <span class="hero-highlight">Carmelo Mendizabal</span>
+        </h1>
+        <p>
+          Esta web es un <strong>prototipo académico</strong> para la asignatura de
+          <strong>Gestión de Calidad</strong>. Simula cómo podría modernizarse la
+          empresa familiar de tornillería <strong>Carmelo Mendizabal</strong> mediante:
+        </p>
+        <ul class="hero-list">
+          <li>Compra de lotes directamente desde la web (apartado <strong>Productos</strong>).</li>
+          <li>Trazabilidad digital de lotes mediante códigos QR (apartado <strong>Trazabilidad QR</strong>).</li>
+          <li>Chatbot multipropósito: presupuestos, dudas técnicas y atención a clientes.</li>
+        </ul>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="productos.html">Ver prototipo de compra de lotes →</a>
+          <a class="btn btn-outline" href="trazabilidad.html">Explorar trazabilidad QR</a>
+          <a class="btn btn-outline" href="pedidos.html">Seguimiento del pedido</a>
+        </div>
+
+        <div class="hero-mini">
+          <div>
+            <div class="hero-mini-title">Objetivo del proyecto</div>
+            <div class="hero-mini-text">
+              Detectar puntos débiles de la empresa y proponer mejoras alineadas con
+              los principios de la gestión de calidad (servicio al cliente, trazabilidad,
+              mejora continua).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>Contexto de la propuesta</h2>
+        <p class="hero-text-small">
+          Actualmente, la web de la empresa muestra productos pero no permite comprar
+          directamente ni consultar precios en tiempo real. Tampoco existe un sistema
+          formal de <strong>trazabilidad de lotes</strong> durante la fabricación.
+        </p>
+
+        <div class="img-grid">
+          <!-- Puedes sustituir las URLs por imágenes propias si quieres -->
+          <figure class="img-card">
+            <img src= "img/Logo.png"alt="Tornillos y tuercas" />
+            <figcaption>Tornillería industrial</figcaption>
+          </figure>
+        </div>
+
+        <p class="hero-text-small">
+          En este prototipo se muestra cómo:
+        </p>
+        <ul class="hero-list hero-list-compact">
+          <li>Un cliente podría realizar un pedido estándar sin llamadas ni correos;</li>
+          <li>Cada lote tendría un <strong>código QR</strong> asociado a su ficha digital;</li>
+          <li>Un chatbot podría atender consultas básicas sin intervención humana.</li>
+          <li>Un cliente podría rastrear su pedido cómodamente desde la web.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <div class="section-header">
+        <h2>Relación con la Gestión de Calidad</h2>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-content">
+            <div class="pill">Calidad de servicio</div>
+            <h3 class="card-title">Mejora en la atención al cliente</h3>
+            <p class="card-text">
+              El e-commerce de lotes y el chatbot reducen tiempos de respuesta,
+              evitan esperas y facilitan la comunicación con el cliente, aumentando
+              la satisfacción y reduciendo errores de pedido.
+            </p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-content">
+            <div class="pill">Calidad del proceso</div>
+            <h3 class="card-title">Trazabilidad y control de lotes</h3>
+            <p class="card-text">
+              El sistema de QR permite seguir cada lote a lo largo del proceso
+              productivo, registrar incidencias y reaccionar rápidamente ante no
+              conformidades, alineándose con prácticas tipo ISO 9001.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-header">
+        <h2>Contacto</h2>
+        <p>Para información directa, atención comercial o soporte técnico puedes contactar con Carmelo Mendizabal en los siguientes canales:</p>
+      </div>
+    
+      <div class="contact-box">
+        <p><strong>Teléfono:</strong> <a href="tel:+34943751337">+34 943 75 13 37</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@carmelomendizabal.com">info@carmelomendizabal.com</a></p>
+        <p><strong>Dirección:</strong><br>
+          Bº Txurruka 1, Ctra. Bergara<br>
+          20590 Soraluze, Gipuzkoa – SPAIN
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chatbot global -->
+  <button class="chat-toggle" id="chatToggle" title="Asistente virtual">
+    💬
+  </button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div>
+        <div class="chat-title">Asistente Carmelo·AI</div>
+        <div class="chat-tagline">
+          Presupuestos · dudas técnicas · atención al cliente
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" placeholder="Escribe tu pregunta..." />
+      <button onclick="sendChat()">Enviar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <footer class="footer">
+    <p><strong>Contacto:</strong> +34 943 75 13 37 · info@carmelomendizabal.com</p>
+    <p>Bº Txurruka, 1 - Ctra. Bergara · 20590 Soraluze, Gipuzkoa (Spain)</p>
+  </footer>
+  
+</body>
+</html>
